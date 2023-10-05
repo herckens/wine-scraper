@@ -20,16 +20,22 @@ def lambda_handler(event, context):
 def get_wine_details(url: str) -> dict:
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
+    degu_notes = extract_degu_notes(soup)
+    return {
+        "degu_notes": degu_notes
+    }
+
+def extract_degu_notes(soup):
     degustation_element = soup.find(
         "div", {"class": "product attribute degustation"}).find("div", {"class": "value"})
-
     degu_notes = degustation_element.text.strip()
     return degu_notes
 
 
 def main(args):
     url = args[0]
-    print(get_wine_details(url))
+    wine_details = get_wine_details(url)
+    print(json.dumps(wine_details, indent=4, ensure_ascii=False))
 
 
 if __name__ == "__main__":
