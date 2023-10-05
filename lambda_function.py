@@ -11,5 +11,6 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': degu_notes
+        # 'body': degu_notes
+        'body': "WTF?"
     }
