@@ -1,0 +1,17 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Get Wine Details",
+            "type": "python",
+            "request": "launch",
+            "program": "lambda_function.py",
+            "args": ["https://www.bindella.ch/weinshop/villa-antinori-riserva-chianti-classico-docg-riserva-antinori-nel-chianti-classico1917"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
