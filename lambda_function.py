@@ -20,13 +20,10 @@ def lambda_handler(event, context):
 def get_wine_details(url: str) -> dict:
     page = requests.get(url)
     soup = BeautifulSoup(page.content, "html.parser")
-    degu_notes = extract_degu_notes(soup)
-    vinification = extract_vinification(soup)
-    price = extract_price(soup)
     return {
-        "degu_notes": degu_notes,
-        "vinification": vinification,
-        "price": price
+        "degu_notes": extract_degu_notes(soup),
+        "vinification": extract_vinification(soup),
+        "price": extract_price(soup)
     }
 
 
