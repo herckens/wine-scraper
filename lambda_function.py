@@ -13,7 +13,7 @@ def lambda_handler(event, context):
 
     return {
         'statusCode': 200,
-        'body': wine_details
+        'body': json.dumps(wine_details, ensure_ascii=False)
     }
 
 
@@ -24,6 +24,7 @@ def get_wine_details(url: str) -> dict:
     return {
         "degu_notes": degu_notes
     }
+
 
 def extract_degu_notes(soup):
     degustation_element = soup.find(
