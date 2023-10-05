@@ -22,9 +22,11 @@ def get_wine_details(url: str) -> dict:
     soup = BeautifulSoup(page.content, "html.parser")
     degu_notes = extract_degu_notes(soup)
     vinification = extract_vinification(soup)
+    price = extract_price(soup)
     return {
         "degu_notes": degu_notes,
-        "vinification": vinification
+        "vinification": vinification,
+        "price": price
     }
 
 
@@ -40,6 +42,13 @@ def extract_vinification(soup):
         "div", {"class": "product attribute vinification"}).find("div", {"class": "value"})
     vinification = vinification_element.text.strip()
     return vinification
+
+
+def extract_price(soup):
+    price_element = soup.find(
+        "div", {"class": "price-box price-final_price"}).find("span", {"class": "price"})
+    price = price_element.text.strip()
+    return price
 
 
 def main(args):
